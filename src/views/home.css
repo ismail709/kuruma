@@ -1,0 +1,44 @@
+.mybtn{
+    background-image: linear-gradient(to right, #F20089 , #2D00F7);
+}
+.mybtn:hover{
+    color: white;
+}
+.boldtxt{
+    font-weight: bold;
+    font-size: 14px;
+}
+.regtxt{
+    font-size: 14px;
+}
+.btntxt{
+    color: white;
+}
+.mylogo{
+    width: 140px;
+    height: auto;
+}
+.electriccars{
+    background:conic-gradient(from 90deg at 0% 0%, rgba(242, 0, 137, 1) 0%, rgba(45, 0, 247, 1) 18%);
+    width: 100%;
+    height: auto;
+}
+.myfooter{
+    background: linear-gradient(287.15deg, #F20089 0%, #2D00F7 100%);
+}
+.mylogotxt{
+    font-family: 'Oleo Script';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 55px;
+text-align: center;
+}
+.smalldivider{
+    width: 50%;
+    height: 2px;
+    margin: auto auto;
+}
+.tripcardbg{
+    background-color: #EEE;
+}
