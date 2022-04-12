@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AppBar from "./components/AppBar";
 import "./App.css";
 import { Outlet, useNavigate } from "react-router-dom";
-
+// test
 function App() {
     const navigate = useNavigate();
     useEffect(() => {
