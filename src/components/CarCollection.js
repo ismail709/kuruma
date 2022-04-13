@@ -1,5 +1,10 @@
 import React from "react";
-import logo from "../img/Kuruma.png";
+
+//images
+import car1Img from "../img/ic-car-toyota.png";
+import car2Img from "../img/ic-car-mercedes.png";
+import car3Img from "../img/ic-car-jaguar.png";
+
 function CarCollection() {
     return (
         <div
@@ -7,38 +12,47 @@ function CarCollection() {
             className="carousel slide"
             data-bs-ride="carousel"
         >
-            <div className="carousel-inner">
+            <div className="carousel-inner text-center">
                 <div className="carousel-item active p-4">
                     <img
-                        src={logo}
+                        src={car1Img}
                         className="d-block w-auto mx-auto"
                         alt="..."
                     />
                     <div className="mt-2">
-                        <div className="h2 fw-bold">CarName</div>
-                        <div className="regtxt">Car Info</div>
+                        <h4>Toyota</h4>
+                        <div className="">
+                            Aute reprehenderit incididunt aute do pariatur
+                            dolore in laborum cillum.
+                        </div>
                     </div>
                 </div>
                 <div className="carousel-item p-4">
                     <img
-                        src={logo}
+                        src={car2Img}
                         className="d-block w-auto mx-auto"
                         alt="..."
                     />
                     <div className="mt-2">
-                        <div className="h2 fw-bold">CarName</div>
-                        <div className="regtxt">Car Info</div>
+                        <h4>Mercedes</h4>
+                        <div className="">
+                            Aute reprehenderit incididunt aute do pariatur
+                            dolore in laborum cillum.
+                        </div>
                     </div>
                 </div>
                 <div className="carousel-item p-4">
                     <img
-                        src={logo}
+                        src={car3Img}
                         className="d-block w-auto mx-auto"
                         alt="..."
                     />
                     <div className="mt-2">
-                        <div className="h2 fw-bold">CarName</div>
-                        <div className="regtxt">Car Info</div>
+                        <h4>Jaguar</h4>
+                        <div className="">
+                            Aute reprehenderit incididunt aute do pariatur
+                            dolore in laborum cillum.
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,12 +13,6 @@ export const userApi = createApi({
                 method: "POST",
                 body: user,
             }),
-            async onQueryStarted(body, { dispatch, queryFulfilled }) {
-                console.log("inside on query started", body);
-                queryFulfilled.then((res) => {
-                    console.log(res);
-                });
-            },
         }),
         addUser: build.mutation({
             query: (user) => ({

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import Searchform from "../components/Searchform.js";
 import "./search.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useGetCarsQuery } from "../api/car";
-import "mapbox-gl/dist/mapbox-gl.css";
+import "../components/mapbox-gl-geocoder.css";
 import mapboxgl from "mapbox-gl";
 import { useDispatch, useSelector } from "react-redux";
 import { setLat, setLng, setMap, setZoom } from "../slices/map";
@@ -75,7 +74,6 @@ function Search() {
         if (!map.current) return; // wait for map to initialize
         // go to location provided by the user in the homepage
         if (location.state) {
-            console.log(location.state);
             map.current.jumpTo({
                 center: [
                     location.state.coordinates[0],

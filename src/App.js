@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
 import AppBar from "./components/AppBar";
 import "./App.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 // test
 function App() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate("/app/search");
-    }, []);
     return (
         <div className="d-flex flex-column vh-100">
             <div className="flex-grow-1">

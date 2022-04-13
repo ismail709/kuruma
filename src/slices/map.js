@@ -16,8 +16,6 @@ export const mapSlice = createSlice({
         setMap: (state, action) => {
             if (!state.map) {
                 state.map = action.payload;
-            } else {
-                console.log("already exist (map)");
             }
         },
     },

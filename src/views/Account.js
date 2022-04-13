@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { useGetUserMutation, useAddUserMutation } from "../api/user";
 function Account() {
+    // handle location state when routing from navbar
+    const location = useLocation();
+
     // handle errors
     const [ErrorMessage, setErrorMessage] = useState();
 
@@ -36,7 +40,6 @@ function Account() {
     // handling server response for singing up
     useEffect(() => {
         if (isError) {
-            console.log(error);
             setErrorMessage(error.data.message);
         } else {
             console.log(data);
@@ -60,6 +63,13 @@ function Account() {
                 "px";
         };
     });
+
+    // handle routing from home page
+    useEffect(() => {
+        if (location.state) {
+            setIsSignup(location.state.isSignup);
+        }
+    }, []);
     return (
         <div id="accountview" className="overflow-scroll">
             <div className="container-md">

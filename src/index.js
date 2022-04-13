@@ -1,6 +1,6 @@
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
@@ -20,9 +20,9 @@ root.render(
     <Provider store={store}>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} exact />
+                <Route index element={<Home />} exact />
                 <Route path="/app" element={<App />}>
-                    <Route path="search" element={<Search />} />
+                    <Route index path="search" element={<Search />} />
                     <Route path="trip" element={<Trip />} />
                     <Route path="history" element={<History />} />
                     <Route path="account" element={<Account />} />

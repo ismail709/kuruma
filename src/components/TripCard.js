@@ -1,5 +1,5 @@
 import React from "react";
-import eleccar from "../img/eleccar.jpg";
+import eleccar from "../img/ic-electric-car-small.png";
 
 function TripCard({ carname, enddate }) {
     return (

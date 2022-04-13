@@ -1,10 +1,20 @@
 import React from "react";
-import logo from "../img/Kuruma.png";
+import { useNavigate } from "react-router-dom";
+import logo from "../img/kuruma.svg";
 
 function NavBar() {
+    const navigate = useNavigate();
+
+    const handleClick = (e) => {
+        if (e.target.id == "join") {
+            navigate("/app/account", { state: { isSignup: true } });
+        } else {
+            navigate("/app/account", { state: { isSignup: false } });
+        }
+    };
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-md navbar-light bg-light w-100">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src={logo} className="mylogo" />
@@ -46,14 +56,20 @@ function NavBar() {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <a
+                                    onClick={(e) => handleClick(e)}
+                                    className="nav-link"
+                                    href="#"
+                                >
                                     Sign in
                                 </a>
                             </li>
                             <li className="nav-item">
                                 <a
+                                    id="join"
                                     className="nav-link rounded-pill text-center text-white fw-bold mybtn px-5"
                                     href="#"
+                                    onClick={(e) => handleClick(e)}
                                 >
                                     Join
                                 </a>
@@ -62,7 +78,6 @@ function NavBar() {
                     </div>
                 </div>
             </nav>
-            <hr className="dropdown-divider" />
         </>
     );
 }
