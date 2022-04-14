@@ -28,7 +28,7 @@ function Home() {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/app/search");
+        navigate("/app");
     };
 
     return (
@@ -56,7 +56,12 @@ function Home() {
             <h2>Book a car in 3 steps</h2>
             <div className="row">
                 <div className="col-md-4 d-flex flex-column p-4">
-                    <img src={searchImg} className="" height="130px" />
+                    <img
+                        src={searchImg}
+                        className=""
+                        height="130px"
+                        alt="choose a car"
+                    />
                     <div className="text-center">
                         <h4>Choose a car</h4>
                         <div className=" ">
@@ -67,7 +72,12 @@ function Home() {
                 </div>
 
                 <div className="col-md-4 d-flex flex-column p-4">
-                    <img src={unlockImg} className="" height="130px" />
+                    <img
+                        src={unlockImg}
+                        className=""
+                        height="130px"
+                        alt="Unlock the car"
+                    />
                     <div className="text-center">
                         <h4>Unlock the car</h4>
                         <div className=" ">
@@ -78,7 +88,12 @@ function Home() {
                 </div>
 
                 <div className="col-md-4 d-flex flex-column p-4">
-                    <img src={snowboardingImg} className="" height="130px" />
+                    <img
+                        src={snowboardingImg}
+                        className=""
+                        height="130px"
+                        alt="Enjoy your trip"
+                    />
                     <div className="text-center">
                         <h4>Enjoy your trip</h4>
                         <div className=" ">
@@ -201,22 +216,22 @@ function Home() {
                 <div className="bg-white smalldivider"></div>
                 <ul className="list-unstyled">
                     <li>
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link text-white" href="#home">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link text-white" href="#howit">
                             How it works
                         </a>
                     </li>
                     <li>
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link text-white" href="#price">
                             Pricing
                         </a>
                     </li>
                     <li>
-                        <a className="nav-link text-white" href="#">
+                        <a className="nav-link text-white" href="#faq">
                             FAQ
                         </a>
                     </li>

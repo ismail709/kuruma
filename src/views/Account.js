@@ -51,7 +51,7 @@ function Account() {
     };
 
     // set view size
-    useEffect(() => {
+    /*useEffect(() => {
         const appbar = document.querySelector("#appbar");
         const historyview = document.querySelector("#accountview");
         historyview.style.height =
@@ -62,7 +62,7 @@ function Account() {
                 appbar.getBoundingClientRect().height +
                 "px";
         };
-    });
+    });*/
 
     // handle routing from home page
     useEffect(() => {
@@ -71,7 +71,7 @@ function Account() {
         }
     }, []);
     return (
-        <div id="accountview" className="overflow-scroll">
+        <div id="accountview" className="overflow-scroll vh-100">
             <div className="container-md">
                 <div>
                     <div

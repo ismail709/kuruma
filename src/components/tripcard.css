@@ -1,0 +1,13 @@
+
+.tripcardbg{
+    background-color: #EEE;
+}
+.trip-card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 5px;
+    height: 150px;
+    width: 300px;
+    background-color: darkorange;
+}

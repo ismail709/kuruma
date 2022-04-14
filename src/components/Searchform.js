@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "./mapbox-gl-geocoder.css";
@@ -8,19 +8,23 @@ function Searchform() {
     const [form, setForm] = useState(null);
     const navigate = useNavigate();
 
-    var geocoder = new MapboxGeocoder({
-        accessToken:
-            "pk.eyJ1IjoiaXNtYWlsMjAyMjMwMyIsImEiOiJjbDF1cXBsNGsyOWgyM2xwZDBscnd5ZTB1In0.gELRjftbCOC7kltK8KLiVQ",
-    });
+    const geocoder = useMemo(
+        () =>
+            new MapboxGeocoder({
+                accessToken:
+                    "pk.eyJ1IjoiaXNtYWlsMjAyMjMwMyIsImEiOiJjbDF1cXBsNGsyOWgyM2xwZDBscnd5ZTB1In0.gELRjftbCOC7kltK8KLiVQ",
+            }),
+        []
+    );
 
     useEffect(() => {
-        if (document.querySelector("#geocoder").children.length == 0) {
+        if (document.querySelector("#geocoder").children.length === 0) {
             geocoder.addTo("#geocoder");
         }
         geocoder.on("result", (res) => {
             setForm({ ...form, coordinates: res.result.center });
         });
-    }, []);
+    }, [geocoder, form]);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value });
@@ -29,7 +33,7 @@ function Searchform() {
     const handleClick = (e) => {
         e.preventDefault();
 
-        navigate("/app/search", { state: form });
+        navigate("/app", { state: form });
     };
 
     return (

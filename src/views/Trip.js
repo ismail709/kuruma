@@ -27,14 +27,14 @@ function Trip() {
     });
     if (!Trip.carid)
         return (
-            <div className="d-flex flex-column justify-content-center align-items-center fs-3 text-muted h-100">
+            <div className="d-flex flex-column justify-content-center align-items-center fs-3 text-muted vh-100 w-100">
                 Pick a car from the Search
             </div>
         );
     if (!isSuccess) return <h1>Loading...</h1>;
     if (carState)
         return (
-            <div className="container-md h-100">
+            <div className="container-fluid p-0">
                 <div className="d-flex flex-column h-100 justify-content-center">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100 mb-5">
                         <img

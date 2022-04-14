@@ -1,7 +1,7 @@
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Search from "./views/Search";
@@ -20,9 +20,10 @@ root.render(
     <Provider store={store}>
         <BrowserRouter>
             <Routes>
+                <Route path="/s" element={<Search />} />
                 <Route index element={<Home />} exact />
                 <Route path="/app" element={<App />}>
-                    <Route index path="search" element={<Search />} />
+                    <Route index element={<Search />} />
                     <Route path="trip" element={<Trip />} />
                     <Route path="history" element={<History />} />
                     <Route path="account" element={<Account />} />

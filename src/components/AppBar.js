@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import "./appbar.css";
+import logo from "../img/kuruma.svg";
 
 function AppBar() {
     return (
-        <div className="d-flex justify-content-around fs-1" id="appbar">
-            <CustomLink to="/app/search">
-                <i className="bi bi-search"></i>
-            </CustomLink>
+        <div className="appbar">
+            <a href="/">
+                <img src={logo} alt="logo" width="140px" className="mb-3" />
+            </a>
+            <hr />
+            <nav className="nav flex-column mb-auto">
+                <CustomLink to="/app">
+                    <i className="bi bi-search"></i>
+                    <span className="navtext">Search</span>
+                </CustomLink>
 
-            <CustomLink to="/app/trip">
-                <i className="bi bi-flag"></i>
-            </CustomLink>
+                <CustomLink to="/app/trip">
+                    <i className="bi bi-flag"></i>
+                    <span className="navtext">Trip</span>
+                </CustomLink>
 
-            <CustomLink to="/app/history">
-                <i className="bi bi-clock-history"></i>
-            </CustomLink>
+                <CustomLink to="/app/history">
+                    <i className="bi bi-clock-history"></i>
+                    <span className="navtext">History</span>
+                </CustomLink>
 
-            <CustomLink to="/app/account">
-                <i className="bi bi-person"></i>
-            </CustomLink>
+                <CustomLink to="/app/account">
+                    <i className="bi bi-person"></i>
+                    <span className="navtext">Account</span>
+                </CustomLink>
+            </nav>
+            <hr className="mb-3" />
+            <h6>
+                Made with ❤ by <a href="#test">Ismail</a>
+            </h6>
         </div>
     );
 }
@@ -26,20 +42,22 @@ function AppBar() {
 function CustomLink({ children, to, ...props }) {
     let resolved = useResolvedPath(to);
     let match = useMatch({ path: resolved.pathname, end: true });
+    const link = useRef(null);
+
+    useEffect(() => {
+        if (match) {
+            link.current.classList.add("lactive");
+        } else {
+            link.current.classList.remove("lactive");
+        }
+    });
 
     return (
-        <div
-            className="d-flex flex-grow-1 justify-content-center p-2"
-            style={{ background: match ? "white" : "#E6E6E6" }}
-        >
-            <Link
-                style={{ color: match ? "#F20089" : "#2D00F7" }}
-                to={to}
-                {...props}
-            >
+        <>
+            <Link to={to} {...props} className="appbar-element" ref={link}>
                 {children}
             </Link>
-        </div>
+        </>
     );
 }
 

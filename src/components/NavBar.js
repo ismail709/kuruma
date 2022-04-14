@@ -6,7 +6,7 @@ function NavBar() {
     const navigate = useNavigate();
 
     const handleClick = (e) => {
-        if (e.target.id == "join") {
+        if (e.target.id === "join") {
             navigate("/app/account", { state: { isSignup: true } });
         } else {
             navigate("/app/account", { state: { isSignup: false } });
@@ -58,7 +58,7 @@ function NavBar() {
                             <li className="nav-item">
                                 <button
                                     onClick={(e) => handleClick(e)}
-                                    className="nav-link"
+                                    className="btn text-muted"
                                 >
                                     Sign in
                                 </button>
@@ -66,7 +66,7 @@ function NavBar() {
                             <li className="nav-item">
                                 <button
                                     id="join"
-                                    className="nav-link rounded-pill text-center text-white fw-bold mybtn px-5"
+                                    className="btn rounded-pill text-center text-white fw-bold mybtn px-5"
                                     onClick={(e) => handleClick(e)}
                                 >
                                     Join

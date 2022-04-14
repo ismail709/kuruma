@@ -1,0 +1,37 @@
+
+/*  #F20089  #2D00F7 */
+.appbar{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding: 2rem;
+    width: 280px;
+    height: 100vh;
+}
+.appbar-element{
+    text-decoration: none;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    color: #2D00F7;
+}
+
+[class="appbar-element"]:hover{
+    background-color: lightgray;
+    color: #2D00F7;
+}
+.lactive{
+    background-image: linear-gradient(to right, #F20089 , #2D00F7);
+    color: white;
+}
+.lactive:hover{
+    background-image: linear-gradient(to right, #F20089 , #2D00F7);
+    color: white;
+}
+
+.navtext{
+    margin-left: 1rem;
+}
+
+@media all and (min-width:600px) {
+    
+}

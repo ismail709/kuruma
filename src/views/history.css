@@ -1,0 +1,6 @@
+#historyview{
+    display: grid;
+    grid-template-columns: minmax();
+    width: 100%;
+    overflow: scroll;
+}

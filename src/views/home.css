@@ -70,9 +70,6 @@ text-align: center;
     height: 2px;
     margin: auto auto;
 }
-.tripcardbg{
-    background-color: #EEE;
-}
 
 @media all and (min-width:1024px) {
     .content-section,.homepage{
