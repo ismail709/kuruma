@@ -17,7 +17,7 @@ function CarCollection() {
                     <img
                         src={car1Img}
                         className="d-block w-auto mx-auto"
-                        alt="..."
+                        alt="car1"
                     />
                     <div className="mt-2">
                         <h4>Toyota</h4>
@@ -31,7 +31,7 @@ function CarCollection() {
                     <img
                         src={car2Img}
                         className="d-block w-auto mx-auto"
-                        alt="..."
+                        alt="car2"
                     />
                     <div className="mt-2">
                         <h4>Mercedes</h4>
@@ -45,7 +45,7 @@ function CarCollection() {
                     <img
                         src={car3Img}
                         className="d-block w-auto mx-auto"
-                        alt="..."
+                        alt="car3"
                     />
                     <div className="mt-2">
                         <h4>Jaguar</h4>

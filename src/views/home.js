@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./home.css";
 import NavBar from "../components/NavBar";
 import Searchform from "../components/Searchform";
@@ -21,6 +21,7 @@ import cheapImg from "../img/ic-cheap.svg";
 import quickImg from "../img/ic-quick.svg";
 import mapImg from "../img/ic-map.svg";
 import anytimeImg from "../img/ic-book-anytime.svg";
+
 import { useNavigate } from "react-router-dom";
 
 function Home() {

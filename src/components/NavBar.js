@@ -16,8 +16,8 @@ function NavBar() {
         <>
             <nav className="navbar navbar-expand-md navbar-light bg-light w-100">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
-                        <img src={logo} className="mylogo" />
+                    <a className="navbar-brand" href="#home">
+                        <img src={logo} className="mylogo" alt="logo" />
                     </a>
                     <button
                         className="navbar-toggler"
@@ -36,43 +36,41 @@ function NavBar() {
                     >
                         <ul className="navbar-nav mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" href="#">
+                                <a className="nav-link active" href="#home">
                                     Home
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <a className="nav-link" href="#howitworks">
                                     How it works
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <a className="nav-link" href="#price">
                                     Pricing
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <a className="nav-link" href="#faq">
                                     FAQ
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a
+                                <button
                                     onClick={(e) => handleClick(e)}
                                     className="nav-link"
-                                    href="#"
                                 >
                                     Sign in
-                                </a>
+                                </button>
                             </li>
                             <li className="nav-item">
-                                <a
+                                <button
                                     id="join"
                                     className="nav-link rounded-pill text-center text-white fw-bold mybtn px-5"
-                                    href="#"
                                     onClick={(e) => handleClick(e)}
                                 >
                                     Join
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>

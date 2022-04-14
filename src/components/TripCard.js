@@ -6,7 +6,11 @@ function TripCard({ carname, enddate }) {
         <div className="card m-2 tripcardbg bg-gradient">
             <div className="row g-0">
                 <div className="col-4 d-flex justify-content-center">
-                    <img src={eleccar} className="img-fluid rounded-start" />
+                    <img
+                        src={eleccar}
+                        className="img-fluid rounded-start"
+                        alt="car image"
+                    />
                 </div>
                 <div className="col-8">
                     <div className="card-body">
