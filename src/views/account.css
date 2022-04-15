@@ -1,0 +1,14 @@
+#accountview{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
+
+.form-container{
+    /* display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; */
+    height:auto;
+}

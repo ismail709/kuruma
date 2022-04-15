@@ -2,7 +2,7 @@ import TripCard from "../components/TripCard";
 import "./history.css";
 
 function History() {
-    /*useEffect(() => {
+  /*useEffect(() => {
         const appbar = document.querySelector("#appbar");
         const historyview = document.querySelector("#historyview");
         historyview.style.height =
@@ -15,26 +15,58 @@ function History() {
         };
     });*/
 
-    return (
-        <div id="historyview">
-            <TripCard
-                carname="Toyota"
-                enddate={new Date().getDate() + "/" + new Date().getMonth()}
-            />
-            <TripCard
-                carname="Toyota"
-                enddate={new Date().getDate() + "/" + new Date().getMonth()}
-            />
-            <TripCard
-                carname="Toyota"
-                enddate={new Date().getDate() + "/" + new Date().getMonth()}
-            />
-            <TripCard
-                carname="Toyota"
-                enddate={new Date().getDate() + "/" + new Date().getMonth()}
-            />
-        </div>
-    );
+  return (
+    <div id="historyview">
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+      <TripCard
+        carname="Toyota"
+        enddate={new Date().getDate() + "/" + new Date().getMonth()}
+      />
+    </div>
+  );
 }
 
 export default History;

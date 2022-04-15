@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useGetUserMutation, useAddUserMutation } from "../api/user";
+import { useLogInQuery, useAddUserMutation } from "../api/user";
+import "./account.css";
+
+
 function Account() {
     // handle location state when routing from navbar
     const location = useLocation();
@@ -13,7 +16,7 @@ function Account() {
     // switch between two forms
     const [isSignup, setIsSignup] = useState(false);
     // check if the user exists
-    const [getUser, { isSuccess }] = useGetUserMutation();
+    const login = useLogInQuery();
     // create new account
     const [addUser, { data, isSuccesss, isLoading, isError, error }] =
         useAddUserMutation();
@@ -71,9 +74,9 @@ function Account() {
         }
     }, []);
     return (
-        <div id="accountview" className="overflow-scroll vh-100">
-            <div className="container-md">
-                <div>
+        <div id="accountview">
+            <div className="form-container">
+                <div className="d-block">
                     <div
                         className="d-flex justify-content-center"
                         style={{ fontSize: "100px" }}
