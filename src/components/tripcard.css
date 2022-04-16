@@ -7,7 +7,7 @@
     flex-direction: row;
     gap: 0.5rem;
     height: 150px;
-    width: 300px;
+    width: 100%;
     background-color: #e7e7e8; /* fallback */
     background-image: linear-gradient(180deg, #E9ECEF, #CED4DA);
     overflow: hidden;

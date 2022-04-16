@@ -7,10 +7,10 @@ function AppBar() {
     return (
         <div className="appbar">
             <a href="/">
-                <img src={logo} alt="logo" width="140px" className="mb-3" />
+                <img src={logo} alt="logo" width="140px" className="logoimg mb-3" />
             </a>
-            <hr />
-            <nav className="nav flex-column mb-auto">
+            <hr/>
+            <nav className="mynav">
                 <CustomLink to="/app">
                     <i className="bi bi-search"></i>
                     <span className="navtext">Search</span>

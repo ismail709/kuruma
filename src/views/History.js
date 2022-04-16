@@ -18,51 +18,51 @@ function History() {
   return (
     <div id="historyview">
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
       <TripCard
-        carname="Toyota"
+        carname="Kia Picanto"
         enddate={new Date().getDate() + "/" + new Date().getMonth()}
       />
     </div>

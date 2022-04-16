@@ -116,7 +116,7 @@ function Search() {
     });
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid h-100 p-0">
             <div ref={mapContainer} className="map"></div>
             <div
                 className="modal fade"

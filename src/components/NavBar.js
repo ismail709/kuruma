@@ -58,7 +58,7 @@ function NavBar() {
                             <li className="nav-item">
                                 <button
                                     onClick={(e) => handleClick(e)}
-                                    className="btn text-muted"
+                                    className="btn text-muted w-100 text-start"
                                 >
                                     Sign in
                                 </button>
@@ -66,7 +66,7 @@ function NavBar() {
                             <li className="nav-item">
                                 <button
                                     id="join"
-                                    className="btn rounded-pill text-center text-white fw-bold mybtn px-5"
+                                    className="btn rounded-pill text-center text-white fw-bold mybtn px-5 w-100"
                                     onClick={(e) => handleClick(e)}
                                 >
                                     Join

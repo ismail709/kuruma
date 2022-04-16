@@ -1,14 +1,14 @@
 #accountview{
-    width:100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    height: 100%;
     overflow: scroll;
 }
 
-.form-container{
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto; */
-    height:auto;
+@media all and (max-width:600px){
+    #accountview form{
+        width:100%;
+        padding: 1rem;
+    }
 }

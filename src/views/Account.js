@@ -75,8 +75,7 @@ function Account() {
     }, []);
     return (
         <div id="accountview">
-            <div className="form-container">
-                <div className="d-block">
+                <div className="">
                     <div
                         className="d-flex justify-content-center"
                         style={{ fontSize: "100px" }}
@@ -92,7 +91,7 @@ function Account() {
                         {ErrorMessage}
                     </div>
                 )}
-                <form className="form">
+                <form className="">
                     {isSignup && (
                         <div className="mb-3">
                             <label htmlFor="name">Name</label>
@@ -457,7 +456,6 @@ function Account() {
                         </>
                     )}
                 </div>
-            </div>
         </div>
     );
 }
