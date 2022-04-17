@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useLogInQuery, useAddUserMutation } from "../api/user";
+import { useLogInMutation, useAddUserMutation } from "../api/user";
 import "./account.css";
 
 
@@ -16,7 +16,7 @@ function Account() {
     // switch between two forms
     const [isSignup, setIsSignup] = useState(false);
     // check if the user exists
-    const login = useLogInQuery();
+    const login = useLogInMutation();
     // create new account
     const [addUser, { data, isSuccesss, isLoading, isError, error }] =
         useAddUserMutation();
@@ -25,6 +25,10 @@ function Account() {
     // handle submit
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(form.password != form.cpassword){
+            setErrorMessage("Password confirmation does not match the password.")
+            return;
+        }
         if (isSignup) {
             const formValues = {
                 name: form.name,
