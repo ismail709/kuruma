@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { useLogInMutation, useAddUserMutation } from "../api/user";
+import { useLogInMutation, useAddUserMutation, useGetUserQuery } from "../api/user";
+import MyAccount from "../components/MyAccount";
+import { LogIn } from "../slices/user";
+import { signinSchema } from "../validations/signin";
 import { signupSchema } from "../validations/signup";
 import "./account.css";
 
@@ -13,28 +16,27 @@ function Account() {
     // handle errors
     const [ErrorMessage, setErrorMessage] = useState();
 
-    const user = useSelector((state) => state.user);
+    // user local state 
+    const isLoggedIn = useSelector(state => state.user.user);
     // switch between two forms
     const [isSignup, setIsSignup] = useState(false);
-    // check if the user exists
-    const login = useLogInMutation();
+    // handle login
+    const [login,{loginStatus}] = useLogInMutation();
     // create new account
-    const [addUser, { data, isSuccesss, isLoading, isError, error }] =
+    const [createAccount,{signinStatus}] =
         useAddUserMutation();
+    // check if the user is logged in
+    const {data : User,refetch} = useGetUserQuery();
+    // dispatch action to log the user locally
+    const dispatch = useDispatch();
     // form values
     const [form, setForm] = useState();
     // handle submit
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isSignup) {
-            console.log(form)
-            signupSchema.validate(form).then((val) => {
-                console.log(val);
-            }).catch((err) => {
-                setErrorMessage(err.errors)
-                setForm({...form,error:err.errors})
-            })
-            /*const formValues = {
+            signupSchema.validate(form).then( async (val) => {
+                const formValues = {
                 username: form.username,
                 email: form.email,
                 password: form.password,
@@ -44,18 +46,32 @@ function Account() {
                     country: form.country,
                 },
             };
-            const q = await addUser(formValues);*/
+            createAccount(formValues).then((val) => {
+                dispatch(LogIn(val.data.user));
+                setForm({});
+            }).catch((err) => {
+                console.log(err)
+            });
+            }).catch((err) => {
+                setErrorMessage(err.errors)
+                setForm({...form,error:err.errors})
+            })
+            
+        }else{
+            signinSchema.validate({email:form.email,password:form.password}).then(async (val) => {
+                login(val).then((val) => {
+                    dispatch(LogIn(val.data.user));
+                    setForm({});
+                }).catch((err) => {
+                    console.log(err)
+                });
+            }).catch((err) => {
+                setErrorMessage(err.errors)
+                setForm({...form,error:err.errors})
+            })
         }
+        
     };
-
-    // handling server response for singing up
-    useEffect(() => {
-        if (isError) {
-            setErrorMessage(error.data.message);
-        } else {
-            console.log(data);
-        }
-    }, [isLoading]);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value });
@@ -78,12 +94,31 @@ function Account() {
         };
     });*/
 
+    useEffect(() => {
+        refetch(); // update the UI when the user login/logout
+        console.log("is logged in",isLoggedIn);
+        console.log("check user state",User);
+    },[isLoggedIn])
+
     // handle routing from home page
     useEffect(() => {
         if (location.state) {
             setIsSignup(location.state.isSignup);
         }
     }, []);
+
+    // check if the user is already logged in and update the state
+    useEffect(() => {
+        console.log("refetch");
+        refetch();
+        if(User?.auth) dispatch(LogIn(User.user))
+    });
+
+
+    if(isLoggedIn && User.auth){
+        return (<MyAccount user={User.user} />)
+    }
+
     return (
         <div id="accountview">
                 <div className="">
@@ -447,7 +482,10 @@ function Account() {
                                 Already have an account?{" "}
                                 <a
                                     className="link"
-                                    onClick={(e) => setIsSignup(false)}
+                                    onClick={(e) => {
+                                        setIsSignup(false);
+                                        delete form?.error;
+                                    }}
                                 >
                                     log in
                                 </a>
@@ -459,7 +497,10 @@ function Account() {
                                 Don't have an account?{" "}
                                 <a
                                     className="link"
-                                    onClick={(e) => setIsSignup(true)}
+                                    onClick={(e) => {
+                                        setIsSignup(true);
+                                        delete form?.error;
+                                    }}
                                 >
                                     create account
                                 </a>

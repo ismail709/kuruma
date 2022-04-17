@@ -4,8 +4,11 @@ import { BASE_URL } from "./baseUrl";
 
 export const userApi = createApi({
     reducerPath: "userApi",
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL,credentials: 'include' }),
     endpoints: (build) => ({
+        getUser: build.query({
+            query: () => "/user",
+        }),
         logIn: build.mutation({
             query: (user) => ({
                 url: "/login",
@@ -27,8 +30,14 @@ export const userApi = createApi({
                 body: user,
             }),
         }),
+        logOut: build.mutation({
+            query: () => ({
+                url :"/logout",
+                method : "POST",
+            }),
+        })
     }),
 });
 
-export const { useLogInMutation, useAddUserMutation, useUpdateUserMutation } =
+export const { useGetUserQuery, useLogInMutation, useAddUserMutation, useUpdateUserMutation, useLogOutMutation } =
     userApi;
