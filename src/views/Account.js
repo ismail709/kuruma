@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useLogInMutation, useAddUserMutation } from "../api/user";
+import { signupSchema } from "../validations/signup";
 import "./account.css";
 
 
@@ -25,13 +26,16 @@ function Account() {
     // handle submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(form.password != form.cpassword){
-            setErrorMessage("Password confirmation does not match the password.")
-            return;
-        }
         if (isSignup) {
-            const formValues = {
-                name: form.name,
+            console.log(form)
+            signupSchema.validate(form).then((val) => {
+                console.log(val);
+            }).catch((err) => {
+                setErrorMessage(err.errors)
+                setForm({...form,error:err.errors})
+            })
+            /*const formValues = {
+                username: form.username,
                 email: form.email,
                 password: form.password,
                 phone_number: form.phonenumber,
@@ -40,7 +44,7 @@ function Account() {
                     country: form.country,
                 },
             };
-            const q = await addUser(formValues);
+            const q = await addUser(formValues);*/
         }
     };
 
@@ -55,6 +59,9 @@ function Account() {
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.id]: e.target.value });
+        if(form?.error){
+            delete form.error;
+        }
     };
 
     // set view size
@@ -90,7 +97,7 @@ function Account() {
                         {isSignup && "Create new account"}
                     </div>
                 </div>
-                {isError && (
+                {form?.error && (
                     <div className="alert alert-danger" role="alert">
                         {ErrorMessage}
                     </div>
@@ -98,11 +105,11 @@ function Account() {
                 <form className="">
                     {isSignup && (
                         <div className="mb-3">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="username">Name</label>
                             <input
                                 type="text"
-                                name="name"
-                                id="name"
+                                name="username"
+                                id="username"
                                 className="form-control"
                                 placeholder="Name"
                                 onChange={handleChange}
