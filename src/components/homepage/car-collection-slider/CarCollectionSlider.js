@@ -1,9 +1,9 @@
 import React, { memo } from "react";
 
 //images
-import car1Img from "../img/ic-car-toyota.png";
-import car2Img from "../img/ic-car-mercedes.png";
-import car3Img from "../img/ic-car-jaguar.png";
+import car1Img from "../../../img/ic-car-toyota.png";
+import car2Img from "../../../img/ic-car-mercedes.png";
+import car3Img from "../../../img/ic-car-jaguar.png";
 
 const  CarCollectionSlider = memo(()=>{
     return (

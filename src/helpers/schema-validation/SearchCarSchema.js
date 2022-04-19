@@ -1,7 +1,7 @@
 import * as yup from "yup"
 import moment from "moment";
 
-export const SearchCarSchema = yup.object().shape({
+const SearchCarSchema = yup.object().shape({
     coordinates: yup.array(yup.string("Please enter a valid address")).required(),
     start:yup.string().required().test({
         name:"isValidDate",
@@ -29,3 +29,5 @@ export const SearchCarSchema = yup.object().shape({
         }
     }),
 });
+
+export default SearchCarSchema;

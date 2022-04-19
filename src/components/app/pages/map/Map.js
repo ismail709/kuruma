@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./search.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useGetCarsQuery } from "../api/car";
-import "../components/mapbox-gl-geocoder.css";
+import { useGetCarsQuery } from "../../../../api/car";
+import "../../../common/css/mapbox-gl-geocoder.css";
 import mapboxgl from "mapbox-gl";
 import { useDispatch, useSelector } from "react-redux";
-import { setLat, setLng, setMap, setZoom } from "../slices/map";
+import { setLat, setLng, setMap, setZoom } from "../../../../slices/map";
 import {
     setCarId,
     setEnddate,
     setEndtime,
     setStartdate,
     setStarttime,
-} from "../slices/trip.js";
+} from "../../../../slices/trip";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import { BASE_URL } from "../api/baseUrl";
+import { BASE_URL } from "../../../../api/baseUrl";
 
 function Map() {
     const location = useLocation();
@@ -226,4 +226,4 @@ function Map() {
     );
 }
 
-export default Search;
+export default Map;

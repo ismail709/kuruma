@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import TripCard from "../components/TripCard";
+import TripCard from "../../common/trip-card";
 import "./history.css";
 
 function History() {

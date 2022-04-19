@@ -1,125 +1,124 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useLogInMutation, useAddUserMutation, useGetUserQuery } from "../../../../api/user";
 import MyAccount from "./account-settings";
 import { LogIn } from "../../../../slices/user";
-import { signinSchema } from "../../../../helpers/signin";
-import { signupSchema } from "../../../../helpers/signup";
+import SignInSchema from "../../../../helpers/schema-validation/SignInSchema";
+import SignUpSchema from "../../../../helpers/schema-validation/SignUpSchema";
 import "./account.css";
 
 
 function Account() {
-    // handle location state when routing from navbar
-    const location = useLocation();
+    // // handle location state when routing from navbar
+    // const location = useLocation();
 
-    // handle errors
-    const [ErrorMessage, setErrorMessage] = useState();
+    // // handle errors
+    // const [ErrorMessage, setErrorMessage] = useState();
 
-    // user local state 
-    const isLoggedIn = useSelector(state => state.user.user);
-    // switch between two forms
-    const [isSignup, setIsSignup] = useState(false);
-    // handle login
-    const [login,{loginStatus}] = useLogInMutation();
-    // create new account
-    const [createAccount,{signinStatus}] =
-        useAddUserMutation();
-    // check if the user is logged in
-    const {data : User,refetch} = useGetUserQuery();
-    // dispatch action to log the user locally
-    const dispatch = useDispatch();
-    // form values
-    const [form, setForm] = useState();
-    // handle submit
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (isSignup) {
-            signupSchema.validate(form).then( async (val) => {
-                const formValues = {
-                username: form.username,
-                email: form.email,
-                password: form.password,
-                phone_number: form.phonenumber,
-                address: {
-                    city: form.city,
-                    country: form.country,
-                },
-            };
-            createAccount(formValues).then((val) => {
-                dispatch(LogIn(val.data.user));
-                setForm({});
-            }).catch((err) => {
-                console.log(err)
-            });
-            }).catch((err) => {
-                setErrorMessage(err.errors)
-                setForm({...form,error:err.errors})
-            })
+    // // user local state 
+    // const isLoggedIn = useSelector(state => state.user.user);
+    // // switch between two forms
+    // const [isSignup, setIsSignup] = useState(false);
+    // // handle login
+    // const [login,{loginStatus}] = useLogInMutation();
+    // // create new account
+    // const [createAccount,{signinStatus}] =
+    //     useAddUserMutation();
+    // // check if the user is logged in
+    // const {data : User,refetch} = useGetUserQuery();
+    // // dispatch action to log the user locally
+    // const dispatch = useDispatch();
+    // // form values
+    // const [form, setForm] = useState();
+    // // handle submit
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     if (isSignup) {
+    //         SignUpSchema.validate(form).then( async (val) => {
+    //             const formValues = {
+    //             username: form.username,
+    //             email: form.email,
+    //             password: form.password,
+    //             phone_number: form.phonenumber,
+    //             address: {
+    //                 city: form.city,
+    //                 country: form.country,
+    //             },
+    //         };
+    //         createAccount(formValues).then((val) => {
+    //             dispatch(LogIn(val.data.user));
+    //             setForm({});
+    //         }).catch((err) => {
+    //             console.log(err)
+    //         });
+    //         }).catch((err) => {
+    //             setErrorMessage(err.errors)
+    //             setForm({...form,error:err.errors})
+    //         })
             
-        }else{
-            signinSchema.validate({email:form.email,password:form.password}).then(async (val) => {
-                login(val).then((val) => {
-                    dispatch(LogIn(val.data.user));
-                    setForm({});
-                }).catch((err) => {
-                    console.log(err)
-                });
-            }).catch((err) => {
-                setErrorMessage(err.errors)
-                setForm({...form,error:err.errors})
-            })
-        }
+    //     }else{
+    //         SignInSchema.validate({email:form.email,password:form.password}).then(async (val) => {
+    //             login(val).then((val) => {
+    //                 dispatch(LogIn(val.data.user));
+    //                 setForm({});
+    //             }).catch((err) => {
+    //                 console.log(err)
+    //             });
+    //         }).catch((err) => {
+    //             setErrorMessage(err.errors)
+    //             setForm({...form,error:err.errors})
+    //         })
+    //     }
         
-    };
+    // };
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.id]: e.target.value });
-        if(form?.error){
-            delete form.error;
-        }
-    };
+    // const handleChange = (e) => {
+    //     setForm({ ...form, [e.target.id]: e.target.value });
+    //     if(form?.error){
+    //         delete form.error;
+    //     }
+    // };
 
-    // set view size
-    /*useEffect(() => {
-        const appbar = document.querySelector("#appbar");
-        const historyview = document.querySelector("#accountview");
-        historyview.style.height =
-            window.innerHeight - appbar.getBoundingClientRect().height + "px";
-        window.onresize = () => {
-            historyview.style.height =
-                window.innerHeight -
-                appbar.getBoundingClientRect().height +
-                "px";
-        };
-    });*/
+    // // set view size
+    // /*useEffect(() => {
+    //     const appbar = document.querySelector("#appbar");
+    //     const historyview = document.querySelector("#accountview");
+    //     historyview.style.height =
+    //         window.innerHeight - appbar.getBoundingClientRect().height + "px";
+    //     window.onresize = () => {
+    //         historyview.style.height =
+    //             window.innerHeight -
+    //             appbar.getBoundingClientRect().height +
+    //             "px";
+    //     };
+    // });*/
 
-    useEffect(() => {
-        refetch(); // update the UI when the user login/logout
-        console.log("is logged in",isLoggedIn);
-        console.log("check user state",User);
-    },[isLoggedIn])
+    // useEffect(() => {
+    //     refetch(); // update the UI when the user login/logout
+    //     console.log("is logged in",isLoggedIn);
+    //     console.log("check user state",User);
+    // },[isLoggedIn])
 
-    // handle routing from home page
-    useEffect(() => {
-        if (location.state) {
-            setIsSignup(location.state.isSignup);
-        }
-    }, []);
+    // // handle routing from home page
+    // useEffect(() => {
+    //     if (location.state) {
+    //         setIsSignup(location.state.isSignup);
+    //     }
+    // }, []);
 
-    // check if the user is already logged in and update the state
-    useEffect(() => {
-        console.log("refetch");
-        refetch();
-        if(User?.auth) dispatch(LogIn(User.user))
-    });
+    // // check if the user is already logged in and update the state
+    // useEffect(() => {
+    //     console.log("refetch");
+    //     refetch();
+    //     if(User?.auth) dispatch(LogIn(User.user))
+    // });
 
 
-    if(isLoggedIn && User.auth){
-        return (<MyAccount user={User.user} />)
-    }
-
-    return (
+    // if(isLoggedIn && User.auth){
+    //     return (<MyAccount user={User.user} />)
+    // }
+    /*return (
         <div id="accountview">
                 <div className="">
                     <div
@@ -509,7 +508,8 @@ function Account() {
                     )}
                 </div>
         </div>
-    );
+    );*/
+    return (<Outlet />)
 }
 
 export default Account;

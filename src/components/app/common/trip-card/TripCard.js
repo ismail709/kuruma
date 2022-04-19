@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import { BASE_URL } from "../../../api/baseUrl";
+import { BASE_URL } from "../../../../api/baseUrl";
 
 function TripCard({ carname, enddate }) {
   return (

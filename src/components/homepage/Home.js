@@ -1,26 +1,26 @@
 import React from "react";
 import "./home.css";
 import NavBar from "./navbar/NavBar";
-import Searchform from "../Searchform";
+import Searchform from "./search-form";
 import CarCollection from "./car-collection-slider/CarCollectionSlider";
 
 // images
-import logo from "../img/kuruma.svg";
+import logo from "../../img/kuruma.svg";
 
-import heroImgS from "../img/ic-hero-image-small.png";
-import heroImgM from "../img/ic-hero-image-medium.png";
-import heroImgL from "../img/ic-hero-image-large.png";
+import heroImgS from "../../img/ic-hero-image-small.png";
+import heroImgM from "../../img/ic-hero-image-medium.png";
+import heroImgL from "../../img/ic-hero-image-large.png";
 
-import searchImg from "../img/ic-search-car.svg";
-import unlockImg from "../img/ic-unlock-car.svg";
-import snowboardingImg from "../img/ic-snowboarding.svg";
+import searchImg from "../../img/ic-search-car.svg";
+import unlockImg from "../../img/ic-unlock-car.svg";
+import snowboardingImg from "../../img/ic-snowboarding.svg";
 
-import electricCarImgS from "../img/ic-electric-car-small.png";
+import electricCarImgS from "../../img/ic-electric-car-small.png";
 
-import cheapImg from "../img/ic-cheap.svg";
-import quickImg from "../img/ic-quick.svg";
-import mapImg from "../img/ic-map.svg";
-import anytimeImg from "../img/ic-book-anytime.svg";
+import cheapImg from "../../img/ic-cheap.svg";
+import quickImg from "../../img/ic-quick.svg";
+import mapImg from "../../img/ic-map.svg";
+import anytimeImg from "../../img/ic-book-anytime.svg";
 
 import { useNavigate } from "react-router-dom";
 

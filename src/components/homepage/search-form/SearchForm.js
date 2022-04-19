@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import "./mapbox-gl-geocoder.css";
+import "../../common/css/mapbox-gl-geocoder.css";
 import { useNavigate } from "react-router-dom";
 
-import { searchSchema } from "../validations/searchcars.js";
+import SearchCarSchema from "../../../helpers/schema-validation/SearchCarSchema";
 
 function SearchForm() {
   const [form, setForm] = useState(null);
@@ -37,7 +37,7 @@ function SearchForm() {
     e.preventDefault();
     console.log(form);
     if (form.startdate && form.starttime && form.enddate && form.endtime) {
-      await searchSchema
+      await SearchCarSchema
         .validate({
           coordinates: form?.coordinates,
           start: new Date(form?.startdate + " " + form?.starttime),

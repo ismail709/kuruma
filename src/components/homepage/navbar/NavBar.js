@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/kuruma.svg";
+import logo from "../../../img/kuruma.svg";
 
 function NavBar() {
     const navigate = useNavigate();
