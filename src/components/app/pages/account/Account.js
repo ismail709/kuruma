@@ -18,7 +18,7 @@ function Account() {
                 navigate("/app/account/user");
             }
         }
-    }, [data]);
+    }, [data, isSuccess, navigate]);
 
     return <Outlet />;
 }

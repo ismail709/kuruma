@@ -24,7 +24,15 @@ function Trip() {
             );
             setcarState({ ...carState, total });
         }
-    });
+    }, [
+        isSuccess,
+        carState,
+        data,
+        Trip.startdate,
+        Trip.starttime,
+        Trip.enddate,
+        Trip.endtime,
+    ]);
     if (!Trip.carid)
         return (
             <div className="d-flex flex-column justify-content-center align-items-center fs-3 text-muted vh-100 w-100">
@@ -47,6 +55,7 @@ function Trip() {
                                     ".jpg"
                                 }
                                 className="mycarimg col-4"
+                                alt="car"
                             />
 
                             <div className="d-inline w-50 h-50 bg-white"></div>

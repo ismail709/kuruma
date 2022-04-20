@@ -36,39 +36,42 @@ function Login() {
         setTimeout(() => {
             setError(null);
         }, 5000);
-    });
+    }, []);
 
-    const handleSubmit = React.useCallback((e) => {
-        // prevent page refresh
-        e.preventDefault();
-        // hide error msg
-        setError(null);
-        // validate the form
-        SignInSchema.validate(serializeForm(e.target))
-            .then(async (res) => {
-                try {
-                    const r = await logIn(res);
-                    if (r.error) {
-                        setError(r.error.data.message);
-                    } else {
-                        const { _id, username } = r.data.user;
-                        dispatch(setUser({ id: _id, username: username }));
-                        setSuccessMessage(
-                            "Logged In Succesfully ! You'll be redirected to Map..."
-                        );
-                        setTimeout(() => {
-                            navigate("/app");
-                        }, 1000);
+    const handleSubmit = React.useCallback(
+        (e) => {
+            // prevent page refresh
+            e.preventDefault();
+            // hide error msg
+            setError(null);
+            // validate the form
+            SignInSchema.validate(serializeForm(e.target))
+                .then(async (res) => {
+                    try {
+                        const r = await logIn(res);
+                        if (r.error) {
+                            setError(r.error.data.message);
+                        } else {
+                            const { _id, username } = r.data.user;
+                            dispatch(setUser({ id: _id, username: username }));
+                            setSuccessMessage(
+                                "Logged In Succesfully ! You'll be redirected to Map..."
+                            );
+                            setTimeout(() => {
+                                navigate("/app");
+                            }, 1000);
+                        }
+                    } catch (err) {
+                        setError(err);
                     }
-                } catch (err) {
-                    setError(err);
-                }
-            })
-            .catch((err) => {
-                setError(err.errors);
-            });
-        hideError();
-    });
+                })
+                .catch((err) => {
+                    setError(err.errors);
+                });
+            hideError();
+        },
+        [dispatch, hideError, logIn, navigate]
+    );
 
     return (
         <div id="register">

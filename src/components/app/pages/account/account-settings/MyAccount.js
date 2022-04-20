@@ -7,7 +7,7 @@ function MyAccount() {
     const navigate = useNavigate();
 
     // logout hook
-    const [logout, status] = useLogOutMutation();
+    const [logout] = useLogOutMutation();
 
     // logout
     const handleLogout = React.useCallback(async () => {
@@ -17,7 +17,7 @@ function MyAccount() {
                 navigate("/app/account/login");
             }, 1000);
         }
-    });
+    }, [logout, navigate]);
 
     return (
         <div className="d-flex flex-column w-100 h-100 justify-content-center align-items-center">

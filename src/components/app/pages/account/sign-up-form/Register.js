@@ -44,37 +44,42 @@ function Register() {
         setTimeout(() => {
             setError(null);
         }, 5000);
-    });
+    }, []);
 
-    const handleSubmit = React.useCallback((e) => {
-        // prevent page refresh
-        e.preventDefault();
-        // hide error msg
-        setError(null);
-        // validate the form
-        SignUpSchema.validate(serializeForm(e.target))
-            .then(async (res) => {
-                try {
-                    const r = await addUser(res);
-                    if (r.error) {
-                        setError(r.error.data.message);
-                    } else {
-                        const { _id, username } = r.data.user;
-                        dispatch(setUser({ id: _id, username: username }))
-                        setSuccessMessage("Account Created Succesfully ! You'll be redirected to Map...");
-                        setTimeout(() => {
-                            navigate("/app");
-                        },5000)
+    const handleSubmit = React.useCallback(
+        (e) => {
+            // prevent page refresh
+            e.preventDefault();
+            // hide error msg
+            setError(null);
+            // validate the form
+            SignUpSchema.validate(serializeForm(e.target))
+                .then(async (res) => {
+                    try {
+                        const r = await addUser(res);
+                        if (r.error) {
+                            setError(r.error.data.message);
+                        } else {
+                            const { _id, username } = r.data.user;
+                            dispatch(setUser({ id: _id, username: username }));
+                            setSuccessMessage(
+                                "Account Created Succesfully ! You'll be redirected to Map..."
+                            );
+                            setTimeout(() => {
+                                navigate("/app");
+                            }, 5000);
+                        }
+                    } catch (err) {
+                        setError(err);
                     }
-                } catch (err) {
-                    setError(err);
-                }
-            })
-            .catch((err) => {
-                setError(err.errors);
-            });
-        hideError();
-    });
+                })
+                .catch((err) => {
+                    setError(err.errors);
+                });
+            hideError();
+        },
+        [dispatch, hideError, addUser, navigate]
+    );
 
     return (
         <div id="register">
