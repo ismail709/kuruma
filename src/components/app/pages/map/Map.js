@@ -14,7 +14,6 @@ import {
     setStarttime,
 } from "../../../../slices/trip";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import { BASE_URL } from "../../../../api/baseUrl";
 
 function Map() {
     const location = useLocation();
@@ -132,7 +131,8 @@ function Map() {
                                 <div className="d-flex flex-row gap-2">
                                     <img
                                         src={
-                                            BASE_URL + "/img/" +
+                                            process.env.REACT_APP_BASE_URL +
+                                            "/img/" +
                                             String(Car.name).toLowerCase() +
                                             ".jpg"
                                         }

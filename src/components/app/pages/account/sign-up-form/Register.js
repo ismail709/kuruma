@@ -1,21 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useAddUserMutation } from "../../../../../api/user";
 import SignUpSchema from "../../../../../helpers/schema-validation/SignUpSchema";
 import { serializeForm } from "../../../../../helpers/serialize-form/serializeform";
+import { setUser } from "../../../../../slices/user";
 
 function Register() {
     // invalid inputs error
-    const [Error, setError] = useState("");
+    const [Error, setError] = useState(null);
+
+    // successful registration
+    const [SuccessMessage, setSuccessMessage] = useState(null);
+
+    // dispatch : to save user info in store
+    const dispatch = useDispatch();
 
     // sign up hook
     const [addUser, status] = useAddUserMutation();
 
+    // navigate
+    const navigate = useNavigate();
+
     // fill form function
-    const fillForm = () => {
+    const fillForm = (e) => {
+        e.preventDefault();
         const form = document.querySelector("form");
         const values = [
             "user",
-            "user00@test.com",
+            "user001@test.com",
             "12345678",
             "12345678",
             "123456",
@@ -27,29 +40,41 @@ function Register() {
         }
     };
 
+    const hideError = React.useCallback(() => {
+        setTimeout(() => {
+            setError(null);
+        }, 5000);
+    });
+
     const handleSubmit = React.useCallback((e) => {
         // prevent page refresh
         e.preventDefault();
+        // hide error msg
+        setError(null);
         // validate the form
         SignUpSchema.validate(serializeForm(e.target))
             .then(async (res) => {
                 try {
                     const r = await addUser(res);
-                    console.log(r);
+                    if (r.error) {
+                        setError(r.error.data.message);
+                    } else {
+                        const { _id, username } = r.data.user;
+                        dispatch(setUser({ id: _id, username: username }))
+                        setSuccessMessage("Account Created Succesfully ! You'll be redirected to Map...");
+                        setTimeout(() => {
+                            navigate("/app");
+                        },5000)
+                    }
                 } catch (err) {
-                    console.log("ERROR", err);
+                    setError(err);
                 }
             })
             .catch((err) => {
                 setError(err.errors);
             });
+        hideError();
     });
-
-    useEffect(() => {
-        if (status.isError) {
-            console.log("error msg: ",status.error.data.message)
-        }
-    }, [status.isError]);
 
     return (
         <div id="register">
@@ -67,9 +92,9 @@ function Register() {
                     {Error}
                 </div>
             )}
-            {status.isError && (
-                <div className="alert alert-danger" role="alert">
-                    {status.error.data.message}
+            {SuccessMessage && (
+                <div className="alert alert-success" role="alert">
+                    {SuccessMessage}
                 </div>
             )}
             <form className="" onSubmit={handleSubmit}>

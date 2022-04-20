@@ -32,7 +32,7 @@ root.render(
                     <Route path="trip" element={<Trip />} />
                     <Route path="history" element={<History />} />
                     <Route path="account" element={<Account />}>
-                        <Route index element={<MyAccount />} />
+                        <Route path="user" element={<MyAccount />} />
                         <Route path="register" element={<Register />} />
                         <Route path="login" element={<Login />} />
                     </Route>

@@ -1,10 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/dist/query/react";
 import { fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
-import { BASE_URL } from "./baseUrl";
 
 export const carApi = createApi({
     reducerPath: "carApi",
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
     endpoints: (build) => ({
         getCars: build.query({
             query: () => "/cars",

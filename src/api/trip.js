@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
-import { BASE_URL } from "./baseUrl";
 
 const tripApi = createApi({
     reducerPath: "tripApi",
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
     endpoints: (build) => ({
         getTrips: build.query({
             query: () => `/trips/${user_id}`,

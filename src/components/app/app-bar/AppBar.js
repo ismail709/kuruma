@@ -7,9 +7,14 @@ function AppBar() {
     return (
         <div className="appbar">
             <a href="/">
-                <img src={logo} alt="logo" width="140px" className="logoimg mb-3" />
+                <img
+                    src={logo}
+                    alt="logo"
+                    width="140px"
+                    className="logoimg mb-3"
+                />
             </a>
-            <hr/>
+            <hr />
             <nav className="mynav">
                 <CustomLink to="/app">
                     <i className="bi bi-search"></i>
@@ -41,7 +46,8 @@ function AppBar() {
 
 function CustomLink({ children, to, ...props }) {
     let resolved = useResolvedPath(to);
-    let match = useMatch({ path: resolved.pathname, end: true });
+    const p = resolved.pathname + "/*";
+    let match = useMatch({ path: p, exact: true });
     const link = useRef(null);
 
     useEffect(() => {

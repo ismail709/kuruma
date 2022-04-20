@@ -7,9 +7,9 @@ function NavBar() {
 
     const handleClick = (e) => {
         if (e.target.id === "join") {
-            navigate("/app/account/register", { state: { isSignup: true } });
+            navigate("/app/account/register");
         } else {
-            navigate("/app/account/login", { state: { isSignup: false } });
+            navigate("/app/account/login");
         }
     };
     return (

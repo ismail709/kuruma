@@ -1,32 +1,38 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
-import { useLogOutMutation } from '../../../../../api/user';
-import { LogOut } from '../../../../../slices/user';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useLogOutMutation } from "../../../../../api/user";
 
-function MyAccount({user}) {
+function MyAccount() {
+    // navigate
+    const navigate = useNavigate();
 
+    // logout hook
+    const [logout, status] = useLogOutMutation();
 
-    const [logOut,{isSuccess}] = useLogOutMutation();
-    const dispatch = useDispatch();
-    const handleLogout = async () => {
-        logOut().then((val) => {
-            console.log(val.data.auth)
-            dispatch(LogOut());
-        });
+    // logout
+    const handleLogout = React.useCallback(async () => {
+        const result = await logout();
+        if (!result.data.auth) {
+            setTimeout(() => {
+                navigate("/app/account/login");
+            }, 1000);
+        }
+    });
 
-    }
-  return (
-    <div className="d-flex flex-column justify-content-center align-items-center h-100">
-        <div className='fs-1'>
-            {user.username}
+    return (
+        <div className="d-flex flex-column w-100 h-100 justify-content-center align-items-center">
+            <div className="fs-1 fw-bolder">username</div>
+            <div className="d-flex flex-row gap-4">
+                <button className="btn btn-secondary">settings</button>
+                <button
+                    className="btn btn-outline-danger"
+                    onClick={handleLogout}
+                >
+                    logout
+                </button>
+            </div>
         </div>
-        <div>
-            <button className="btn btn-outline-secondary" onClick={(e) => handleLogout()}>
-                Logout
-            </button>
-        </div>
-    </div>
-  )
+    );
 }
 
-export default MyAccount
+export default MyAccount;
