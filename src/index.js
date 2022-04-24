@@ -12,7 +12,6 @@ import Trip from "./components/app/pages/trip";
 import Account from "./components/app/pages/account";
 import Login from "./components/app/pages/account/login-form";
 import Register from "./components/app/pages/account/sign-up-form";
-import MyAccount from "./components/app/pages/account/account-settings";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -31,12 +30,10 @@ root.render(
                     <Route index element={<Map />} />
                     <Route path="trip" element={<Trip />} />
                     <Route path="history" element={<History />} />
-                    <Route path="account" element={<Account />}>
-                        <Route path="user" element={<MyAccount />} />
-                        <Route path="register" element={<Register />} />
-                        <Route path="login" element={<Login />} />
-                    </Route>
+                    <Route path="account" element={<Account />} />
                 </Route>
+                <Route path="register" element={<Register />} />
+                <Route path="login" element={<Login />} />
             </Routes>
         </BrowserRouter>
     </Provider>

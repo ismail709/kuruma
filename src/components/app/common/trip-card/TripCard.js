@@ -6,12 +6,7 @@ function TripCard({ carname, enddate }) {
         <div className="trip-card-container">
             <div className="">
                 <img
-                    src={
-                        process.env.REACT_APP_BASE_URL +
-                        "/img/" +
-                        String(carname).toLowerCase() +
-                        ".jpg"
-                    }
+                    src={"/img/" + String(carname).toLowerCase() + ".jpg"}
                     width="150px"
                     height="150px"
                     style={{ objectFit: "cover" }}

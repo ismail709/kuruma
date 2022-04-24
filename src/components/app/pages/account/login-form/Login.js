@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLogInMutation } from "../../../../../api/user";
 import SignInSchema from "../../../../../helpers/schema-validation/SignInSchema";
 import { serializeForm } from "../../../../../helpers/serialize-form/serializeform";
@@ -74,67 +74,74 @@ function Login() {
     );
 
     return (
-        <div id="register">
-            <div className="">
-                <div
-                    className="d-flex justify-content-center"
-                    style={{ fontSize: "100px" }}
-                >
-                    <i className="bi bi-person-circle"></i>
-                </div>
-                <div className="text-center fs-2">Create new account</div>
-            </div>
-            {Error && (
-                <div className="alert alert-danger" role="alert">
-                    {Error}
-                </div>
-            )}
-            {SuccessMessage && (
-                <div className="alert alert-success" role="alert">
-                    {SuccessMessage}
-                </div>
-            )}
-            <form className="" onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        className="form-control"
-                        placeholder="email@example.com"
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        className="form-control"
-                        placeholder="********"
-                    />
-                </div>
-                <div className="mb-3">
-                    <button
-                        type="submit"
-                        className="btn mybtn w-100 p-2 btntxt boldtxt"
-                        disabled={status.isLoading}
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-12">
+                    <div
+                        className="d-flex justify-content-center"
+                        style={{ fontSize: "100px" }}
                     >
-                        Sign up
-                    </button>
+                        <i className="bi bi-person-circle"></i>
+                    </div>
                 </div>
-                {process.env.REACT_APP_IS_DEMO && (
-                    <div className="mb-3">
-                        <button
-                            className="btn btn-outline-secondary w-100 p-2 btntxt boldtxt"
-                            onClick={fillForm}
-                        >
-                            Fill form
-                        </button>
+                {Error && (
+                    <div className="alert alert-danger" role="alert">
+                        {Error}
                     </div>
                 )}
-            </form>
+                {SuccessMessage && (
+                    <div className="alert alert-success" role="alert">
+                        {SuccessMessage}
+                    </div>
+                )}
+                <form className="col-md-6 col-lg-4" onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            className="form-control"
+                            placeholder="email@example.com"
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            className="form-control"
+                            placeholder="********"
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <button
+                            type="submit"
+                            className="btn mybtn w-100 p-2 btntxt boldtxt"
+                            disabled={status.isLoading}
+                        >
+                            Login
+                        </button>
+                    </div>
+                    {process.env.REACT_APP_IS_DEMO && (
+                        <div className="mb-3">
+                            <button
+                                className="btn btn-outline-secondary w-100 p-2 btntxt boldtxt"
+                                onClick={fillForm}
+                            >
+                                Fill form
+                            </button>
+                        </div>
+                    )}
+                </form>
+                <div className="col-12 text-center">
+                    <h6>
+                        Or you can <Link to="/register">sign up</Link> to create
+                        a new account
+                    </h6>
+                </div>
+            </div>
         </div>
     );
 }

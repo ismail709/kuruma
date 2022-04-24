@@ -37,7 +37,7 @@ function AppBar() {
                 </CustomLink>
             </nav>
             <hr className="mb-3" />
-            <h6>
+            <h6 className="madewithlove">
                 Made with ❤ by <a href="#test">Ismail</a>
             </h6>
         </div>
@@ -46,8 +46,7 @@ function AppBar() {
 
 function CustomLink({ children, to, ...props }) {
     let resolved = useResolvedPath(to);
-    const p = resolved.pathname + "/*";
-    let match = useMatch({ path: p, exact: true });
+    let match = useMatch({ path: resolved.pathname, exact: true });
     const link = useRef(null);
 
     useEffect(() => {
